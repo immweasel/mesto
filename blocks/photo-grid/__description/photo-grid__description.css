@@ -1,6 +1,9 @@
 .photo-grid__description {
 	margin: 0;
 	padding: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 	font-family: 'Inter';
   font-style: normal;
   font-weight: 900;
