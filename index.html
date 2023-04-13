@@ -31,45 +31,45 @@
 
       <section class="photo-grid">
         <div class="photo-grid__item">
-          <img src="./images/karachaevsk1.jpg" alt="Карачаевск">
+          <img class="photo-grid__photo" src="./images/karachaevsk1.jpg" alt="Карачаевск">
           <div class="photo-grid__description-container">
-            <p class="photo-grid__description">Карачаевск</p>
-            <button class="photo-grid__like button"></button>
+            <h3 class="photo-grid__description">Карачаевск</h3>
+            <button class="photo-grid__like button" type="button"></button>
           </div>
         </div>
         <div class="photo-grid__item">
-          <img src="./images/elbrus2.png" alt="Эльбрус">
+          <img class="photo-grid__photo" src="./images/elbrus2.png" alt="Эльбрус">
           <div class="photo-grid__description-container">
-            <p class="photo-grid__description">Эльбрус</p>
-            <button class="photo-grid__like button"></button>
+            <h3 class="photo-grid__description">Эльбрус</h3>
+            <button class="photo-grid__like button" type="button"></button>
           </div>
         </div>
         <div class="photo-grid__item">
-          <img src="./images/dombai3.png" alt="Домбай">
+          <img class="photo-grid__photo" src="./images/dombai3.png" alt="Домбай">
           <div class="photo-grid__description-container">
-            <p class="photo-grid__description">Домбай</p>
-            <button class="photo-grid__like button"></button>
+            <h3 class="photo-grid__description">Домбай</h3>
+            <button class="photo-grid__like button" type="button"></button>
           </div>
         </div>
         <div class="photo-grid__item">
-          <img src="./images/kamchatka4.jpg" alt="Камчатка">
+          <img class="photo-grid__photo" src="./images/kamchatka4.jpg" alt="Камчатка">
           <div class="photo-grid__description-container">
-            <p class="photo-grid__description">Камчатка</p>
-            <button class="photo-grid__like button"></button>
+            <h3 class="photo-grid__description">Камчатка</h3>
+            <button class="photo-grid__like button" type="button"></button>
           </div>
         </div>
         <div class="photo-grid__item">
-          <img src="./images/penincula5.jpg" alt="Пенинсула">
+          <img class="photo-grid__photo" src="./images/penincula5.jpg" alt="Пенинсула">
           <div class="photo-grid__description-container">
-            <p class="photo-grid__description">Пенинсула</p>
-            <button class="photo-grid__like button"></button>
+            <h3 class="photo-grid__description">Пенинсула</h3>
+            <button class="photo-grid__like button" type="button"></button>
           </div>
         </div>
         <div class="photo-grid__item">
-          <img src="./images/sudak6.jpg" alt="Судак">
+          <img class="photo-grid__photo" src="./images/sudak6.jpg" alt="Судак">
           <div class="photo-grid__description-container">
-            <p class="photo-grid__description">Судак</p>
-            <button class="photo-grid__like button"></button>
+            <h3 class="photo-grid__description">Судак</h3>
+            <button class="photo-grid__like button" type="button"></button>
           </div>
         </div>
       </section>
@@ -79,10 +79,10 @@
       <p class="footer__copyright">&copy; Максимова Кира</p>
     </footer>
 
-    <div class="popup">
-      <form class="popup__container" action="#">
-        <button class="popup__close button"></button>
-        <p class="popup__name">Редактировать профиль</p>
+    <div class="popup__container">
+      <button class="popup__close button" type="button"></button>
+      <form class="popup__form" action="#" name="edit-profile-info">
+        <h2 class="popup__name">Редактировать профиль</h2>
         <input class="popup__text" type="text" name="name" id="name">
         <input class="popup__text" type="text" name="description" id="description">
         <input class="popup__save button" type="submit" value="Сохранить">
