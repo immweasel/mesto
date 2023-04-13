@@ -2,6 +2,7 @@
 	margin: 0;
 	padding: 0;
   text-overflow: ellipsis;
+  max-width: 205px;
   white-space: nowrap;
   overflow: hidden;
 	font-family: 'Inter';
