@@ -5,12 +5,12 @@ const nameText = nameObject.textContent; //задаем и получаем те
 const descriptionText = descriptionObject.textContent;
 
 const editObject = document.querySelector('.profile__edit') //кнопка для редактирования профиля
-const popupObject = document.querySelector('.popup__container') //форма редактирования
+const popupObject = document.querySelector('.popup') //форма редактирования
 const closeObject = document.querySelector('.popup__close') //кнопка закрытия формы редактирования
+
 const textNameObject = document.querySelector('#name') //инпут имени профиля
 const textDescriptionObject = document.querySelector('#description') //инпут описания профиля
-const saveObject = document.querySelector('.popup__save') //кнопка для сохранения изменений
-const formObject = document.querySelector('.popup__form')
+const formObject = document.querySelector('.popup__form') //кнопка для сохранения изменений
 
 function openPopup() {
   popupObject.classList.add('popup_opened');
@@ -29,4 +29,4 @@ function popupSubmit(evt) {
 
 editObject.addEventListener('click', openPopup)
 closeObject.addEventListener('click', closePopup)
-saveObject.addEventListener('submit', popupSubmit)
+formObject.addEventListener('submit', popupSubmit)
