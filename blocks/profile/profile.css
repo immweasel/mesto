@@ -4,7 +4,8 @@
   flex-direction: row;
   align-self: center;
   justify-content: space-between;
-	width: 68.75%;
+  max-width: 880px;
+	width: 80%;
   min-width: 282px;
 }
 
