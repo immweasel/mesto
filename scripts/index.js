@@ -1,7 +1,6 @@
 const nameObject = document.querySelector(".profile__name"); //имя профиля
 const descriptionObject = document.querySelector(".profile__description"); //описание профиля
 const editObject = document.querySelector(".profile__edit"); //кнопка для редактирования профиля
-const popupObject = document.querySelector(".popup"); //форма редактирования
 const closeEditObject = document.querySelector(".popup__close_edit"); //кнопка закрытия формы редактирования
 const closeAddObject = document.querySelector(".popup__close_add"); //кнопка закрытия формы добавления
 let textNameObject = document.querySelector("#name"); //инпут имени профиля
@@ -11,10 +10,12 @@ let placeLinkObject = document.querySelector("#place-link"); //импут ссы
 const formEditObject = document.querySelector(".popup__form_edit"); 
 const formAddObject = document.querySelector(".popup__form_add"); 
 const cardTemplate = document.querySelector("#card-template").content;
-const editPopup = document.querySelector(".popup__container_edit");
-const addPopup = document.querySelector(".popup__container_add");
 const addButton = document.querySelector(".profile__add");
 const photoGrid = document.querySelector(".photo-grid");
+const popupEditObject = document.querySelector(".popup_edit");
+const popupAddObject = document.querySelector(".popup_add");
+const popups = document.querySelectorAll('.popup')
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -48,21 +49,20 @@ function addCard(name, link) {
   firstCard.querySelector(".photo-grid__photo").src = link;
   firstCard.querySelector(".photo-grid__photo").alt = name;
   photoGrid.prepend(firstCard);
-  const deleteButton = document.querySelector(".photo-grid__delete");
+  const deleteButton = firstCard.querySelector(".photo-grid__delete");
   deleteButton.addEventListener("click", function(event) {
     event.target.parentNode.remove()
+  });
+  const likeButton = firstCard.querySelector(".photo-grid__like");
+  likeButton.addEventListener("click", function() {
+    likeButton.classList.toggle("photo-grid__like_active");
   });
 }
 
 initialCards.forEach(element => addCard(element.name, element.link));
 
-function openPopupOverlay() {
-  popupObject.classList.add("popup_opened");
-}
-
 function openEditPopup() {
-  openPopupOverlay();
-  editPopup.classList.add("popup__container_opened");
+  popupEditObject.classList.add("popup_opened");
   const nameText = nameObject.textContent; //задаем и получаем текстовое содержимое
   const descriptionText = descriptionObject.textContent;
   textNameObject.value = nameText;
@@ -70,14 +70,12 @@ function openEditPopup() {
 }
 
 function openAddPopup() {
-  openPopupOverlay();
-  addPopup.classList.add("popup__container_opened");
+  popupAddObject.classList.add("popup_opened");
 }
 
 function closePopup() {
-  popupObject.classList.remove("popup_opened");
-  editPopup.classList.remove("popup__container_opened");
-  addPopup.classList.remove("popup__container_opened");
+  popupAddObject.classList.remove("popup_opened");
+  popupEditObject.classList.remove("popup_opened");
 }
 
 function popupAddSubmit(evt) {
@@ -91,6 +89,16 @@ function popupEditSubmit(evt) {
   nameObject.textContent = textNameObject.value;
   descriptionObject.textContent = textDescriptionObject.value;
   closePopup();
+}
+
+for(const item of popups) {
+  item.querySelector('.popup__container').addEventListener('click', (e) => {
+    e.stopPropagation()
+  })
+
+  item.addEventListener('click', () => {
+    closePopup()
+  })
 }
 
 editObject.addEventListener("click", openEditPopup);
