@@ -29,50 +29,17 @@
         <button class="profile__add button" type="button"></button>
       </section>
 
-      <section class="photo-grid">
+      <template id="card-template">
         <div class="photo-grid__item">
-          <img class="photo-grid__photo" src="./images/karachaevsk1.jpg" alt="Карачаевск">
+          <img class="photo-grid__photo" src="#" alt="#">
           <div class="photo-grid__description-container">
-            <h3 class="photo-grid__description">Карачаевск</h3>
+            <h3 class="photo-grid__description"></h3>
             <button class="photo-grid__like button" type="button"></button>
           </div>
         </div>
-        <div class="photo-grid__item">
-          <img class="photo-grid__photo" src="./images/elbrus2.png" alt="Эльбрус">
-          <div class="photo-grid__description-container">
-            <h3 class="photo-grid__description">Эльбрус</h3>
-            <button class="photo-grid__like button" type="button"></button>
-          </div>
-        </div>
-        <div class="photo-grid__item">
-          <img class="photo-grid__photo" src="./images/dombai3.png" alt="Домбай">
-          <div class="photo-grid__description-container">
-            <h3 class="photo-grid__description">Домбай</h3>
-            <button class="photo-grid__like button" type="button"></button>
-          </div>
-        </div>
-        <div class="photo-grid__item">
-          <img class="photo-grid__photo" src="./images/kamchatka4.jpg" alt="Камчатка">
-          <div class="photo-grid__description-container">
-            <h3 class="photo-grid__description">Камчатка</h3>
-            <button class="photo-grid__like button" type="button"></button>
-          </div>
-        </div>
-        <div class="photo-grid__item">
-          <img class="photo-grid__photo" src="./images/penincula5.jpg" alt="Пенинсула">
-          <div class="photo-grid__description-container">
-            <h3 class="photo-grid__description">Пенинсула</h3>
-            <button class="photo-grid__like button" type="button"></button>
-          </div>
-        </div>
-        <div class="photo-grid__item">
-          <img class="photo-grid__photo" src="./images/sudak6.jpg" alt="Судак">
-          <div class="photo-grid__description-container">
-            <h3 class="photo-grid__description">Судак</h3>
-            <button class="photo-grid__like button" type="button"></button>
-          </div>
-        </div>
-      </section>
+      </template>
+
+      <section class="photo-grid"></section>
     </main>
 
 		<footer class="footer">
@@ -80,15 +47,27 @@
     </footer>
 
     <div class="popup">
-      <div class="popup__container">
-        <button class="popup__close button" type="button"></button>
-        <form class="popup__form" action="#" name="edit-profile-info">
+
+      <div class="popup__container popup__container_edit">
+        <button class="popup__close popup__close_edit button" type="button"></button>
+        <form class="popup__form popup__form_edit" action="#" name="edit-profile-info">
           <h2 class="popup__name">Редактировать профиль</h2>
           <input class="popup__text" type="text" name="name" id="name">
           <input class="popup__text" type="text" name="description" id="description">
-          <input class="popup__save button" type="submit" value="Сохранить">
+          <input class="popup__save popup__save_edit button" type="submit" value="Сохранить">
         </form>
       </div>
+
+      <div class="popup__container popup__container_add">
+        <button class="popup__close popup__close_add button" type="button"></button>
+        <form class="popup__form popup__form_add" action="#" name="edit-profile-info">
+          <h2 class="popup__name">Новое место</h2>
+          <input class="popup__text" type="text" name="name" id="place-name" placeholder="Название">
+          <input class="popup__text" type="text" name="description" id="place-link" placeholder="Ссылка на картинку">
+          <input class="popup__save popup__save_add button" type="submit" value="Создать">
+        </form>
+      </div>
+      
     </div>
 
     <script src="./scripts/index.js"></script>
