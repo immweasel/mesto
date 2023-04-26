@@ -48,6 +48,10 @@ function addCard(name, link) {
   firstCard.querySelector(".photo-grid__photo").src = link;
   firstCard.querySelector(".photo-grid__photo").alt = name;
   photoGrid.prepend(firstCard);
+  const deleteButton = document.querySelector(".photo-grid__delete");
+  deleteButton.addEventListener("click", function(event) {
+    event.target.parentNode.remove()
+  });
 }
 
 initialCards.forEach(element => addCard(element.name, element.link));
