@@ -5,3 +5,7 @@
 	height: 282px;
   object-fit: cover;
 }
+
+.photo-grid__photo:hover {
+	cursor: pointer;
+}
