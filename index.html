@@ -31,7 +31,7 @@
 
       <template id="card-template">
         <div class="photo-grid__item">
-          <button class="photo-grid__delete button"></button>
+          <button class="photo-grid__delete button" type="button"></button>
           <img class="photo-grid__photo" src="#" alt="#">
           <div class="photo-grid__description-container">
             <h3 class="photo-grid__description"></h3>
@@ -47,7 +47,7 @@
       <p class="footer__copyright">&copy; 2023 Максимова Кира</p>
     </footer>
 
-    <div class="popup popup_edit">
+    <div class="popup popup_type_edit">
       <div class="popup__container">
         <button class="popup__close button" type="button"></button>
         <form class="popup__form popup__form_edit" action="#" name="edit-profile-info">
@@ -59,26 +59,27 @@
       </div>
     </div>
 
-    <div class="popup popup_add">
+    <div class="popup popup_type_add">
       <div class="popup__container">
         <button class="popup__close button" type="button"></button>
         <form class="popup__form popup__form_add" action="#" name="edit-profile-info">
           <h2 class="popup__name">Новое место</h2>
           <input class="popup__text" type="text" name="name" id="place-name" placeholder="Название">
-          <input class="popup__text type="text" name="description" id="place-link" placeholder="Ссылка на картинку">
+          <input class="popup__text" type="text" name="description" id="place-link" placeholder="Ссылка на картинку">
           <input class="popup__save popup__save_add button" type="submit" value="Создать">
         </form>
       </div>
     </div>
 
-    <div class="popup popup_magnifying-picture">
-      <figure class="popup__figure">
-        <button class="popup__close popup__close-figure button"></button>
+    <div class="popup popup_type_figure">
+      <figure class="popup__container_type_figure">
+        <button class="popup__close popup__close-figure button" type="button"></button>
         <img class="popup__figure-photo" src="#" alt="#">
         <figcaption class="popup__figure-caption"></figcaption>
       </figure>
     </div>
 
+    <script src="./scripts/constants.js"></script>
     <script src="./scripts/index.js"></script>
 
 	</body>

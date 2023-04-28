@@ -1,50 +1,23 @@
 const nameObject = document.querySelector(".profile__name"); //имя профиля
 const descriptionObject = document.querySelector(".profile__description"); //описание профиля
 const editObject = document.querySelector(".profile__edit"); //кнопка для редактирования профиля
-let textNameObject = document.querySelector("#name"); //инпут имени профиля
-let textDescriptionObject = document.querySelector("#description"); //инпут описания профиля
-let placeNameObject = document.querySelector("#place-name"); //импут названия места
-let placeLinkObject = document.querySelector("#place-link"); //импут ссылки на картинку места
+const textNameObject = document.querySelector("#name"); //инпут имени профиля
+const textDescriptionObject = document.querySelector("#description"); //инпут описания профиля
+const placeNameObject = document.querySelector("#place-name"); //импут названия места
+const placeLinkObject = document.querySelector("#place-link"); //импут ссылки на картинку места
 const formEditObject = document.querySelector(".popup__form_edit"); //форма редактирования
 const formAddObject = document.querySelector(".popup__form_add"); // форма добавления
 const cardTemplate = document.querySelector("#card-template").content; //темплейт карточек
 const addButton = document.querySelector(".profile__add"); //кнопка редактирования профиля
 const photoGrid = document.querySelector(".photo-grid"); //секция фотогрид
-const popupEditObject = document.querySelector(".popup_edit"); //попап редактирования
-const popupAddObject = document.querySelector(".popup_add"); //попап добавления
+const popupEditObject = document.querySelector(".popup_type_edit"); //попап редактирования
+const popupAddObject = document.querySelector(".popup_type_add"); //попап добавления
 const closeEditObject = popupEditObject.querySelector(".popup__close"); //кнопка закрытия формы редактирования
 const closeAddObject = popupAddObject.querySelector(".popup__close"); //кнопка закрытия формы добавления
-const figurePopup = document.querySelector(".popup_magnifying-picture");
+const figurePopup = document.querySelector(".popup_type_figure");
 const closeFigureObject = figurePopup.querySelector(".popup__close");
 const figurePopupPhoto = figurePopup.querySelector(".popup__figure-photo");
 const figurePopupCaption = figurePopup.querySelector(".popup__figure-caption");
-
-const initialCards = [ 
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
 
 function popupEditSubmit(evt) {
   evt.preventDefault();
@@ -84,7 +57,7 @@ function deleteOnClick (event) {
   event.target.parentNode.remove();
 }
 
-function createCard(name, link) {
+function createCard(name, link) { //извините пожалуйста, но я пока что не знаю ничего про объекты и не знаю, как заменить всё на один параметр
   const firstCard = cardTemplate.querySelector(".photo-grid__item").cloneNode(true);
   const cardPhoto = firstCard.querySelector(".photo-grid__photo");
   cardPhoto.alt = name;
@@ -105,11 +78,11 @@ function popupAddSubmit(evt) {
   evt.preventDefault();
   photoGrid.prepend(createCard(placeNameObject.value, placeLinkObject.value));
   closePopup(popupAddObject);
+  placeNameObject.value = "";
+  placeLinkObject.value = "";
 }
 
 function openAddPopup() {
-  placeNameObject.value = "";
-  placeLinkObject.value = "";
   openPopupOverlay(popupAddObject);
 }
 
