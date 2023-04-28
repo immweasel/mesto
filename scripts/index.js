@@ -78,11 +78,11 @@ function popupAddSubmit(evt) {
   evt.preventDefault();
   photoGrid.prepend(createCard(placeNameObject.value, placeLinkObject.value));
   closePopup(popupAddObject);
-  placeNameObject.value = "";
-  placeLinkObject.value = "";
 }
 
 function openAddPopup() {
+  placeNameObject.value = "";
+  placeLinkObject.value = "";
   openPopupOverlay(popupAddObject);
 }
 
