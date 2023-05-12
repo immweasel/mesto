@@ -1,11 +1,24 @@
 .popup__text-input-container {
   display: flex;
-  margin-bottom: 30px;
+  margin: 0;
+  padding: 0;
+  height: 57px;
   align-self: center;
   justify-content: start;
   flex-direction: column;
 }
 
 .popup__text-input-container:last-of-type {
-  margin-bottom: 48px;
+  height: 75px;
+}
+
+@media screen and (max-width: 700px) {
+
+  .popup__text-input-container {
+    height: 70px;
+  }
+
+  .popup__text-input-container:last-of-type {
+    height: 75.26px;
+  }
 }
