@@ -8,10 +8,12 @@
 
 ![Главная страница](/images/forreadme1.jpg)
 ![Формаредактирования профиля](/images/forreadme2.jpg)
+![Валидация формы редактирования профиля](/images/forreadme3.jpg)
+![Валидация формы новой карточки](/images/forreadme4.jpg)
 
 **Figma**
 
-* [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
+* [Ссылка на макет в Figma](https://www.figma.com/file/J98MulcmgmKyJ8k6C1kEeH/JavaScript-Mesto?type=design&node-id=0%3A1&t=0eB95VQhD7YkFgxr-1)
 
 **Ссылка на проект**
 
