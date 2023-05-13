@@ -1,47 +1,47 @@
-const nameObj = document.querySelector(".profile__name"); //имя профиля
-const descriptionObj = document.querySelector(".profile__description"); //описание профиля
-const editObj = document.querySelector(".profile__edit"); //кнопка для редактирования профиля
-const textNameObj = document.querySelector("#name"); //инпут имени профиля
-const textDescriptionObj = document.querySelector("#description"); //инпут описания профиля
-const placeNameObj = document.querySelector("#place-name"); //импут названия места
-const placeLinkObj = document.querySelector("#place-link"); //импут ссылки на картинку места
-const formEditObj = document.querySelector(".popup__form_edit"); //форма редактирования
-const formAddObj = document.querySelector(".popup__form_add"); // форма добавления
+const nameOfProfile = document.querySelector(".profile__name"); //h1 имя профиля
+const descriptionOfProfile = document.querySelector(".profile__description"); //p описание профиля
+const editButton = document.querySelector(".profile__edit"); //кнопка для редактирования профиля
+const inputNameOfProfile = document.querySelector("#name"); //инпут имени профиля
+const inputDescriptionOfProfile = document.querySelector("#description"); //инпут описания профиля
+const inputNameOfPlace = document.querySelector("#place-name"); //импут названия места
+const inputLinkOfPlace = document.querySelector("#place-link"); //импут ссылки на картинку места
+const formEdit = document.querySelector(".popup__form_edit"); //форма редактирования
+const formAdd = document.querySelector(".popup__form_add"); // форма добавления
 const cardTemplate = document.querySelector("#card-template").content; //темплейт карточек
-const addButton = document.querySelector(".profile__add");
+const addButton = document.querySelector(".profile__add"); //кнопки сохранить и создать
 const photoGrid = document.querySelector(".photo-grid"); //секция фотогрид
-const popupEditObj = document.querySelector(".popup_type_edit"); //попап редактирования
-const popupAddObj = document.querySelector(".popup_type_add"); //попап добавления
-const closeEditObj = popupEditObj.querySelector(".popup__close"); //кнопка закрытия формы редактирования
-const closeAddObj = popupAddObj.querySelector(".popup__close"); //кнопка закрытия формы добавления
+const popupEdit = document.querySelector(".popup_type_edit"); //попап редактирования
+const popupAdd = document.querySelector(".popup_type_add"); //попап добавления
+const closeButtonEdit = popupEdit.querySelector(".popup__close"); //кнопка закрытия формы редактирования
+const closeButtonAdd = popupAdd.querySelector(".popup__close"); //кнопка закрытия формы добавления
 const figurePopup = document.querySelector(".popup_type_figure");
-const closeFigureObj = figurePopup.querySelector(".popup__close");
+const closeButtonFigure = figurePopup.querySelector(".popup__close");
 const figurePopupPhoto = figurePopup.querySelector(".popup__figure-photo");
 const figurePopupCaption = figurePopup.querySelector(".popup__figure-caption");
 const escapeButton = 27;
 
 //константы для валидации
-const submitButtonFromProfileForm = formEditObj.querySelector(".popup__save");
-const inputFromProfileForm = formEditObj.querySelectorAll(".popup__text");
-const submitButtonFromAddForm = formAddObj.querySelector(".popup__save");
-const inputFromAddForm = formAddObj.querySelectorAll(".popup__text");
+const submitButtonFromProfileForm = formEdit.querySelector(".popup__save");
+const inputFromProfileForm = formEdit.querySelectorAll(".popup__text");
+const submitButtonFromAddForm = formAdd.querySelector(".popup__save");
+const inputFromAddForm = formAdd.querySelectorAll(".popup__text");
 
 function popupEditSubmit(evt) {
   evt.preventDefault();
-  nameObj.textContent = textNameObj.value;
-  descriptionObj.textContent = textDescriptionObj.value;
-  closePopup(popupEditObj);
+  nameOfProfile.textContent = inputNameOfProfile.value;
+  descriptionOfProfile.textContent = inputDescriptionOfProfile.value;
+  closePopup(popupEdit);
 }
 
 //открытие попапа для редактирования профиля
 function openEditPopup() {
-  openPopupOverlay(popupEditObj);
-  formEditObj.reset();
-  resetErrorForOpenPopup(formEditObj); //очищаем при следующем открытии попапа
-  const nameText = nameObj.textContent; //задаем и получаем текстовое содержимое
-  const descriptionText = descriptionObj.textContent;
-  textNameObj.value = nameText;
-  textDescriptionObj.value = descriptionText;
+  openPopupOverlay(popupEdit);
+  formEdit.reset();
+  resetErrorForOpenPopup(formEdit); //очищаем при следующем открытии попапа
+  const nameText = nameOfProfile.textContent; //задаем и получаем текстовое содержимое
+  const descriptionText = descriptionOfProfile.textContent;
+  inputNameOfProfile.value = nameText;
+  inputDescriptionOfProfile.value = descriptionText;
   toggleButtonState(inputFromProfileForm, submitButtonFromProfileForm, config.inactiveButtonClass);
 }
 
@@ -110,28 +110,28 @@ function prependElementInContainer(container, element) {
 function popupAddSubmit(evt) {
   evt.preventDefault();
   const constants = {
-    name: placeNameObj.value,
-    link: placeLinkObj.value
+    name: inputNameOfPlace.value,
+    link: inputLinkOfPlace.value
   }
   prependElementInContainer(photoGrid, (createCard(constants)));
-  closePopup(popupAddObj);
+  closePopup(popupAdd);
 }
 
 //открытие попапа карточек
 function openAddPopup() {
-  formAddObj.reset();
-  resetErrorForOpenPopup(formAddObj);
-  openPopupOverlay(popupAddObj);
+  formAdd.reset();
+  resetErrorForOpenPopup(formAdd);
+  openPopupOverlay(popupAdd);
   toggleButtonState(inputFromAddForm, submitButtonFromAddForm, config.inactiveButtonClass); //очищение ошибок при открытии
 }
 
-editObj.addEventListener("click", openEditPopup);
+editButton.addEventListener("click", openEditPopup);
 addButton.addEventListener("click", openAddPopup);
-closeEditObj.addEventListener("click", () => closePopup(popupEditObj));
-closeAddObj.addEventListener("click", () => closePopup(popupAddObj));
-closeFigureObj.addEventListener("click", () => closePopup(figurePopup));
-formEditObj.addEventListener("submit", popupEditSubmit);
-formAddObj.addEventListener("submit", popupAddSubmit);
-popupEditObj.addEventListener("click", (e) => closePopupByOverlayClick(e));
-popupAddObj.addEventListener("click", (e) => closePopupByOverlayClick(e));
+closeButtonEdit.addEventListener("click", () => closePopup(popupEdit));
+closeButtonAdd.addEventListener("click", () => closePopup(popupAdd));
+closeButtonFigure.addEventListener("click", () => closePopup(figurePopup));
+formEdit.addEventListener("submit", popupEditSubmit);
+formAdd.addEventListener("submit", popupAddSubmit);
+popupEdit.addEventListener("click", (e) => closePopupByOverlayClick(e));
+popupAdd.addEventListener("click", (e) => closePopupByOverlayClick(e));
 figurePopup.addEventListener("click", (e) => closePopupByOverlayClick(e));
