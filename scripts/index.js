@@ -1,5 +1,6 @@
 import initialCards from './constants.js';
 import Card from './Card.js';
+import FormValidator from './FormValidator.js';
 
 const nameOfProfile = document.querySelector(".profile__name"); //h1 имя профиля
 const descriptionOfProfile = document.querySelector(".profile__description"); //p описание профиля
@@ -22,12 +23,16 @@ const closeButtonFigure = figurePopup.querySelector(".popup__close");
 const figurePopupPhoto = figurePopup.querySelector(".popup__figure-photo");
 const figurePopupCaption = figurePopup.querySelector(".popup__figure-caption");
 const escapeButton = 27;
+const formPersonalDataElement = document.forms.personalData
+const formAddCardElement = document.forms.addCard
 
 //константы для валидации
+/*
 const submitButtonFromProfileForm = formEdit.querySelector(".popup__save");
 const inputFromProfileForm = formEdit.querySelectorAll(".popup__text");
 const submitButtonFromAddForm = formAdd.querySelector(".popup__save");
 const inputFromAddForm = formAdd.querySelectorAll(".popup__text");
+*/
 
 function popupEditSubmit(evt) {
   evt.preventDefault();
@@ -36,10 +41,20 @@ function popupEditSubmit(evt) {
   closePopup(popupEdit);
 }
 
+//открытие попапа карточек
+function openAddPopup() {
+  openPopupOverlay(popupAdd);
+  formAdd.reset();
+  formAddCardValidator.resetErrorForOpenPopup(formAdd);
+  //resetErrorForOpenPopup(formAdd);
+  //toggleButtonState(inputFromAddForm, submitButtonFromAddForm, config.inactiveButtonClass); //очищение ошибок при открытии
+}
+
 //открытие попапа для редактирования профиля
 function openEditPopup() {
   openPopupOverlay(popupEdit);
   formEdit.reset();
+  formPersonalDataValidator.resetErrorForOpenPopup(formEdit);
  //resetErrorForOpenPopup(formEdit); //очищаем при следующем открытии попапа
   const nameText = nameOfProfile.textContent; //задаем и получаем текстовое содержимое
   const descriptionText = descriptionOfProfile.textContent;
@@ -91,7 +106,6 @@ function openFigurePopup(cardData) {
 
 function createNewCard(element) {
   const card = new Card(element, selectorTemplate, openFigurePopup);
-  console.log(card)
   const cardElement = card.createCard();
   return cardElement;
 }
@@ -99,6 +113,26 @@ function createNewCard(element) {
 initialCards.forEach(element => {
   prependElementInContainer(photoGrid, createNewCard(element));
 });
+
+const validationConfig = {
+  allforms: document.forms,
+  inputSelector: ".popup__text",
+  submitButtonSelector: ".popup__save_add",
+
+  invalidationErrorSelector: ".popup__invalid_type_",
+
+  inactiveButtonClass: "popup__save_add_disabled",
+  inputErrorClass: "popup__text_invalid"
+}
+
+//создание экземпляра класса FormValidator для formEdit и запуск валидации
+const formPersonalDataValidator = new FormValidator(validationConfig, formPersonalDataElement);
+formPersonalDataValidator.enableValidation();
+
+//создание экземпляра класса FormValidator для formAdd и запуск валидации
+const formAddCardValidator = new FormValidator(validationConfig, formAddCardElement);
+formAddCardValidator.enableValidation();
+
 
 //prependElementInContainer(photoGrid, createCard(element));
 
@@ -114,14 +148,6 @@ function popupAddSubmit(evt) {
   };
   prependElementInContainer(photoGrid, createNewCard(CardDataNameUrl));
   closePopup(popupAdd);
-}
-
-//открытие попапа карточек
-function openAddPopup() {
-  formAdd.reset();
-  //resetErrorForOpenPopup(formAdd);
-  openPopupOverlay(popupAdd);
-  //toggleButtonState(inputFromAddForm, submitButtonFromAddForm, config.inactiveButtonClass); //очищение ошибок при открытии
 }
 
 editButton.addEventListener("click", openEditPopup);

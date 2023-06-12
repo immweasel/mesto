@@ -54,7 +54,7 @@ function toggleButtonState(inputList, button, inactiveButtonClass) {
 }
 
 function hasValidInput(inputList) {
-  return Array.from(inputList).every((input) => input.validity.valid)
+  return Array.from(inputList).every((input) => input.validity.valid);
 }
 
 /*
