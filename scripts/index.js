@@ -9,8 +9,7 @@ const inputNameOfProfile = document.querySelector("#name"); //инпут име�
 const inputDescriptionOfProfile = document.querySelector("#description"); //инпут описания профиля
 const inputNameOfPlace = document.querySelector("#place-name"); //импут названия места
 const inputLinkOfPlace = document.querySelector("#place-link"); //импут ссылки на картинку места
-const formEdit = document.querySelector(".popup__form_edit"); //форма редактирования
-const formAdd = document.querySelector(".popup__form_add"); // форма добавления
+
 const selectorTemplate = "#card-template"; //темплейт карточек
 const addButton = document.querySelector(".profile__add"); //кнопки сохранить и создать
 const photoGrid = document.querySelector(".photo-grid"); //секция фотогрид
@@ -23,8 +22,9 @@ const closeButtonFigure = figurePopup.querySelector(".popup__close");
 const figurePopupPhoto = figurePopup.querySelector(".popup__figure-photo");
 const figurePopupCaption = figurePopup.querySelector(".popup__figure-caption");
 const escapeButton = 27;
-const formPersonalDataElement = document.forms.personalData
-const formAddCardElement = document.forms.addCard
+
+const formEdit = document.querySelector(".popup__form_edit"); //форма редактирования
+const formAdd = document.querySelector(".popup__form_add"); // форма добавления
 
 //константы для валидации
 /*
@@ -45,7 +45,7 @@ function popupEditSubmit(evt) {
 function openAddPopup() {
   openPopupOverlay(popupAdd);
   formAdd.reset();
-  formAddCardValidator.resetErrorForOpenPopup(formAdd);
+  formAddCardValidator.resetErrorForOpenPopup();
   //resetErrorForOpenPopup(formAdd);
   //toggleButtonState(inputFromAddForm, submitButtonFromAddForm, config.inactiveButtonClass); //очищение ошибок при открытии
 }
@@ -54,7 +54,7 @@ function openAddPopup() {
 function openEditPopup() {
   openPopupOverlay(popupEdit);
   formEdit.reset();
-  formPersonalDataValidator.resetErrorForOpenPopup(formEdit);
+  formPersonalDataValidator.resetErrorForOpenPopup();
  //resetErrorForOpenPopup(formEdit); //очищаем при следующем открытии попапа
   const nameText = nameOfProfile.textContent; //задаем и получаем текстовое содержимое
   const descriptionText = descriptionOfProfile.textContent;
@@ -100,7 +100,7 @@ function closePopup(popupObj) {
 function openFigurePopup(cardData) {
   openPopupOverlay(figurePopup);
   figurePopupPhoto.src = cardData.link;
-  figurePopupCaption.alt = cardData.name;
+  figurePopupPhoto.alt = cardData.name;
   figurePopupCaption.textContent = cardData.name;
 }
 
@@ -126,11 +126,11 @@ const validationConfig = {
 }
 
 //создание экземпляра класса FormValidator для formEdit и запуск валидации
-const formPersonalDataValidator = new FormValidator(validationConfig, formPersonalDataElement);
+const formPersonalDataValidator = new FormValidator(validationConfig, formEdit);
 formPersonalDataValidator.enableValidation();
 
 //создание экземпляра класса FormValidator для formAdd и запуск валидации
-const formAddCardValidator = new FormValidator(validationConfig, formAddCardElement);
+const formAddCardValidator = new FormValidator(validationConfig, formAdd);
 formAddCardValidator.enableValidation();
 
 
