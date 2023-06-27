@@ -18,6 +18,7 @@ import {
   configInfo,
   validationConfig
 } from './scripts/utils/constants.js';
+import '../src/pages/index.css';
 
 const userInfo = new UserInfo(configInfo);
 
