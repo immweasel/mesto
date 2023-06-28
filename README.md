@@ -4,13 +4,6 @@
 
 ### Обзор
 
-**Картинки**
-
-![Главная страница](/images/forreadme1.jpg)
-![Формаредактирования профиля](/images/forreadme2.jpg)
-![Валидация формы редактирования профиля](/images/forreadme3.jpg)
-![Валидация формы новой карточки](/images/forreadme4.jpg)
-
 **Figma**
 
 * [Ссылка на макет в Figma](https://www.figma.com/file/J98MulcmgmKyJ8k6C1kEeH/JavaScript-Mesto?type=design&node-id=0%3A1&t=0eB95VQhD7YkFgxr-1)
