@@ -27,28 +27,27 @@ popupFigure.setEventListeners()
 
 const section = new Section({
   items: initialCards,
-  renderer: (cardData) => section.addItem(createCard(cardData));
-  /*{ 
-    //const card = new Card(cardData, selectorTemplate, popupFigure.open); 
-    //return card.createCard(); 
+  renderer: (cardData) => {
+    const card = new Card(cardData, selectorTemplate, popupFigure.open);
+    section.addItem(card.createCard());
+    }
+    /*{ 
+    const card = new Card(cardData, selectorTemplate, popupFigure.open); 
+    return card.createCard(); 
   }*/
 }, listElementSelector)
 
 section.renderItems();
 
-const popupProfile = new PopupWithForm(popupProfileSelector, setEventListeners()) /*(evt) => { 
-  evt.preventDefault(); 
-  userInfo.setUserInfo(popupProfile.getInputValue()); 
-  popupProfile.close();
-});*/
+const popupProfile = new PopupWithForm(popupProfileSelector, (data) => {
+  userInfo.setUserInfo(data);
+});
 
 popupProfile.setEventListeners();
 
-const popupAddCard = new PopupWithForm(popupAddCardSelector, setEventListeners()) /*(evt) => { 
-  evt.preventDefault(); 
-  section.addItem(section.renderer(popupAddCard.getInputValue()));
-  popupAddCard.close();
-});*/
+const popupAddCard = new PopupWithForm(popupAddCardSelector, (data) => {
+  section.addItem(section.renderer(data));
+});
 
 popupAddCard.setEventListeners();
 
