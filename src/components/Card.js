@@ -12,10 +12,6 @@ export default class Card {
     this._subtitle = this._cloneElement.querySelector('.photo-grid__description');
   }
 
-  /*_getTemplateClone() {
-    return document.querySelector(this._selectorTemplate).content.querySelector('.photo-grid__item').cloneNode(true);
-  }*/
-
   _handleLike = () => {
     this._likeElement.classList.toggle("photo-grid__like_active");
   }
@@ -35,20 +31,11 @@ export default class Card {
     this._imageElement.addEventListener("click", this._handleOpenPopupImage);
   }
 
-  /*
-  лексическое окружение статья
-
-  _setEventListener() {
-    this._likeElement.addEventListener("click", () => this._handleLike());
-  } */
-
   createCard() {
-    //this._cloneElement = this._getTemplateClone();
-    //this._cloneElement.querySelector('.photo-grid__description').textContent = this._name;
     this._imageElement.src = this._link;
     this._imageElement.alt = this._name;
     this._subtitle.textContent = this._name;
-    this._setEventListener()
-    return this._cloneElement 
+    this._setEventListener();
+    return this._cloneElement; 
   }
 }

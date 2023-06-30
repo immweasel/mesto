@@ -27,14 +27,10 @@ popupFigure.setEventListeners()
 
 const section = new Section({
   items: initialCards,
-  renderer: (cardData) => {
+  renderer: (cardData) => { 
     const card = new Card(cardData, selectorTemplate, popupFigure.open);
     section.addItem(card.createCard());
-    }
-    /*{ 
-    const card = new Card(cardData, selectorTemplate, popupFigure.open); 
-    return card.createCard(); 
-  }*/
+  }
 }, listElementSelector)
 
 section.renderItems();
@@ -46,7 +42,7 @@ const popupProfile = new PopupWithForm(popupProfileSelector, (data) => {
 popupProfile.setEventListeners();
 
 const popupAddCard = new PopupWithForm(popupAddCardSelector, (data) => {
-  section.addItem(section.renderer(data));
+  section.renderer(data);
 });
 
 popupAddCard.setEventListeners();
