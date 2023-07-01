@@ -27,15 +27,19 @@ const initialCards = [
 
 const formEdit = document.querySelector(".popup__form_edit"); //форма редактирования
 const formAdd = document.querySelector(".popup__form_add"); // форма добавления
+const formAvatar = document.querySelector(".popup__form_avatar");
 
 const editButton = document.querySelector(".profile__edit"); //кнопка для редактирования профиля
 const addButton = document.querySelector(".profile__add"); //кнопки сохранить и создать
+const avatarButton = document.querySelector(".profile__avatar_button");
 
 const selectorTemplate = "#card-template"; //темплейт карточек
 const popupProfileSelector = ".popup_type_edit";
 const popupFigureSelector = ".popup_type_figure";
 const listElementSelector = ".photo-grid";
 const popupAddCardSelector = ".popup_type_add";
+const popupAvatarSelector = ".popup_type_avatar";
+const popupDeleteSelector = ".popup_type_delete";
 
 const configInfo = {
   nameOfProfileSelector: ".profile__name",
@@ -57,13 +61,17 @@ export {
   initialCards,
   formEdit, 
   formAdd,
+  formAvatar,
   editButton,
   addButton,
+  avatarButton,
   selectorTemplate,
   popupProfileSelector,
   popupFigureSelector,
   listElementSelector,
   popupAddCardSelector,
+  popupAvatarSelector,
+  popupDeleteSelector,
   configInfo,
   validationConfig
 };

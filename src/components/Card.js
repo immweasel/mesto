@@ -1,5 +1,5 @@
 export default class Card {
-  constructor(cardData, selectorTemplate, openFigurePopup) {
+  constructor(cardData, selectorTemplate, openFigurePopup, openDeletePopup) {
     this._cardData = cardData;
     this._link = cardData.link;
     this._name = cardData.name;
@@ -10,6 +10,7 @@ export default class Card {
     this._likeElement = this._cloneElement.querySelector('.photo-grid__like');
     this._deleteElement = this._cloneElement.querySelector('.photo-grid__delete');
     this._subtitle = this._cloneElement.querySelector('.photo-grid__description');
+    this._openDeletePopup = openDeletePopup;
   }
 
   _handleLike = () => {
@@ -17,8 +18,7 @@ export default class Card {
   }
 
   _handleDelete = () => {
-    this._cloneElement.remove();
-    this._cloneElement = null;
+    this._openDeletePopup(this);
   }
 
   _handleOpenPopupImage = () => {
@@ -29,6 +29,11 @@ export default class Card {
     this._likeElement.addEventListener("click", this._handleLike);
     this._deleteElement.addEventListener("click", this._handleDelete);
     this._imageElement.addEventListener("click", this._handleOpenPopupImage);
+  }
+
+  removeCard() {
+    this._cloneElement.remove();
+    this._cloneElement = null;
   }
 
   createCard() {
