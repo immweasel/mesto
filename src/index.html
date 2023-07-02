@@ -17,14 +17,14 @@
       <section class="profile">
         <div class="profile__container">
           <button class="profile__avatar_button button" type="button">
-            <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="Аватарка"> //<%=require('./images/avatar.jpg')%>
+            <img class="profile__avatar" src="#" alt="Аватарка"> //<%=require('./images/avatar.jpg')%>
           </button>
           <div class="profile__info">
             <div class="profile__edit-container">
-              <h1 class="profile__name">Жак-Ив Кусто</h1>
+              <h1 class="profile__name"></h1>
               <button class="profile__edit button" type="button"></button>
             </div>
-            <p class="profile__description">Исследователь океана</p>
+            <p class="profile__description"></p>
           </div>
         </div>
         <button class="profile__add button" type="button"></button>
@@ -36,7 +36,10 @@
           <img class="photo-grid__photo" src="#" alt="#">
           <div class="photo-grid__description-container">
             <h3 class="photo-grid__description"></h3>
-            <button class="photo-grid__like button" type="button"></button>
+            <div class="photo-grid__likes-container">
+              <button class="photo-grid__like button" type="button"></button>
+              <span class="photo-grid__counter"></span>
+            </div>
           </div>
         </div>
       </template>
@@ -58,7 +61,7 @@
             class="popup__text popup__text_name" 
             type="text" 
             name="name" 
-            id="naame" 
+            id="name" 
             placeholder="Имя"
             minlength="2" 
             maxlength="40" 
@@ -91,13 +94,13 @@
             <input 
             class="popup__text popup__text_place-name" 
             type="text" 
-            name="name" 
-            id="name" 
+            name="title" 
+            id="title" 
             placeholder="Название" 
             minlength="2" 
             maxlength="30" 
             required>
-            <span class="popup__invalid popup__invalid_type_name"></span>
+            <span class="popup__invalid popup__invalid_type_title"></span>
           </div>
           <div class="popup__text-input-container">
             <input 

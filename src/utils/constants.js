@@ -1,26 +1,26 @@
 const initialCards = [ 
   {
-    name: 'Архыз',
+    title: 'Архыз',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
   },
   {
-    name: 'Челябинская область',
+    title: 'Челябинская область',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
   },
   {
-    name: 'Иваново',
+    title: 'Иваново',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
   },
   {
-    name: 'Камчатка',
+    title: 'Камчатка',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
   },
   {
-    name: 'Холмогорский район',
+    title: 'Холмогорский район',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
   },
   {
-    name: 'Байкал',
+    title: 'Байкал',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
@@ -32,6 +32,7 @@ const formAvatar = document.querySelector(".popup__form_avatar");
 const editButton = document.querySelector(".profile__edit"); //кнопка для редактирования профиля
 const addButton = document.querySelector(".profile__add"); //кнопки сохранить и создать
 const avatarButton = document.querySelector(".profile__avatar_button");
+const avatarElement = document.querySelector(".profile__avatar");
 
 const selectorTemplate = "#card-template"; //темплейт карточек
 const popupProfileSelector = ".popup_type_edit";
@@ -41,9 +42,11 @@ const popupAddCardSelector = ".popup_type_add";
 const popupAvatarSelector = ".popup_type_avatar";
 const popupDeleteSelector = ".popup_type_delete";
 
+
 const configInfo = {
   nameOfProfileSelector: ".profile__name",
-  descriptionOfProfileSelector: ".profile__description"
+  descriptionOfProfileSelector: ".profile__description",
+  profileAvatar: ".profile__avatar"
 };
 
 const validationConfig = {
@@ -65,6 +68,7 @@ export {
   editButton,
   addButton,
   avatarButton,
+  avatarElement,
   selectorTemplate,
   popupProfileSelector,
   popupFigureSelector,
