@@ -1,4 +1,4 @@
-.profile__avatar_button {
+.profile__avatar-button {
   padding: 0;
   margin: 0;
   display: flex;
@@ -11,7 +11,7 @@
   border: none;
 }
 
-.profile__avatar_button::before {
+.profile__avatar-button::before {
   z-index: 1;
   content: '';
   position: absolute;
@@ -28,7 +28,7 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .profile__avatar_button:hover::before {
+  .profile__avatar-button:hover::before {
     opacity: 1;
     transition: opacity 0.5s ease-in-out;
     cursor: pointer;

@@ -31,7 +31,7 @@ const formAvatar = document.querySelector(".popup__form_avatar");
 
 const editButton = document.querySelector(".profile__edit"); //кнопка для редактирования профиля
 const addButton = document.querySelector(".profile__add"); //кнопки сохранить и создать
-const avatarButton = document.querySelector(".profile__avatar_button");
+const avatarButton = document.querySelector(".profile__avatar-button");
 const avatarElement = document.querySelector(".profile__avatar");
 
 const selectorTemplate = "#card-template"; //темплейт карточек
