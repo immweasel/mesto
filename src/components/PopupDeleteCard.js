@@ -5,15 +5,14 @@ export default class PopupDeleteCard extends Popup {
     super(popupSelector);
     this._submitFunction = submitFunction;
     this._form = this._popup.querySelector(".popup__form");
-    this._submitButton = this._form.querySelector(".popup__submit");
-    this._defaultTextButton = this._submitButton.textContent;
+    this.submitButton = this._form.querySelector(".popup__submit");
   }
 
   setEventListeners() {
     super.setEventListeners();
     this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
-      this._submitButton.textContent = `${this._submitButton.textContent}...`
+      // this._submitButton.textContent = `${this._submitButton.textContent}...`
       this._submitFunction({ element: this._element, cardId: this._cardId });
     })
   }
@@ -24,7 +23,7 @@ export default class PopupDeleteCard extends Popup {
     this._cardId = cardId;
   }
 
-  setupDefaultText() {
-    this._submitButton.textContent = this._defaultTextButton;
-  }
+  // setupDefaultText() {
+  //   this._submitButton.textContent = this._defaultTextButton;
+  // }
 }

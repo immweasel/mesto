@@ -39,7 +39,10 @@ export default class Card {
   }
 
   _changeVisibleForDelete() {
-    this._myId === this._ownerId ? this._deleteElement.style.display = 'block' : this._deleteElement.style.display = 'none'
+    if (this._myId != this._ownerId) {
+      this._deleteElement.remove();
+          }
+    //this._myId === this._ownerId ? this._deleteElement.style.display = 'block' : this._deleteElement.style.display = 'none'
   }
 
   removeCard() {
@@ -51,13 +54,13 @@ export default class Card {
     this._imageElement.src = this._link;
     this._imageElement.alt = this._name;
     this._subtitle.textContent = this._name;
-    this._checkStatusLike();
+    this.checkStatusLike();
     this._changeVisibleForDelete();
     this._setEventListener();
     return this._cloneElement; 
   }
 
-  _checkStatusLike() {
+  checkStatusLike() {
     this._likes.forEach(item => {
       if (item._id === this._myId) {
         this._likeElement.classList.add("photo-grid__like_active");

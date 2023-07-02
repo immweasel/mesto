@@ -27,6 +27,10 @@ import {
 } from '../utils/constants.js';
 import '../pages/index.css';
 
+const defaultDeleteTextSave = 'Схранение...';
+const defaultDeleteTextAdd = 'Создание...';
+const defaultDeleteTextYes = 'Да...';
+
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-69',
   headers: {
@@ -47,14 +51,14 @@ const deletePopupCard = new PopupDeleteCard(popupDeleteSelector, ({ element, car
       deletePopupCard.close();
     })
       .catch((error => console.error(`Ошибка при убирании карточки ${error}`)))
-      .finally(() => deletePopupCard.setupDefaultText())
+      .finally(() => deletePopupCard.submitButton.textContent = defaultDeleteTextYes);
 });
 
 deletePopupCard.setEventListeners();
 
 function createNewCard (cardData) {
   const card = new Card(cardData, selectorTemplate, popupFigure.open, deletePopupCard.open, (likeElement, cardId) => {
-    if (likeElement.classList.contains("photo-grid__like_active")) {
+    if (card.checkStatusLike()) {
       api.deleteLike(cardId)
         .then(res => {
           card.toggleLike(res.likes);
@@ -84,20 +88,28 @@ const popupProfile = new PopupWithForm(popupProfileSelector, (data) => {
       popupProfile.close();
     })
     .catch((error => console.error(`Ошибка при редактировании профиля ${error}`)))
-    .finally(() => popupProfile.setupDefaultText())
+    .finally(() => popupProfile.submitButton.textContent = defaultDeleteTextSave);
 });
 
 popupProfile.setEventListeners();
 
 const popupAddCard = new PopupWithForm(popupAddCardSelector, (data) => {
-  Promise.all([api.getInfo(), api.addCard(data)])
-    .then(([dataUser, dataCard]) => {
+  //Promise.all([api.getInfo(), api.addCard(data)])
+  api.addCard(data)
+    .then(res => {
+      res.myid = res._id;
+        section.addItemPrepend(createNewCard(res))
+        popupAddCard.close()
+      })
+      .catch((error => console.error(`Ошибка при создании новой карточки ${error}`)))
+      .finally(() => popupAddCard.setupDefaultText())
+      .then(([dataUser, dataCard]) => {
       dataCard.myid = dataUser._id;
       section.addItemPrepend(createNewCard(dataCard))
       popupAddCard.close()
     })
       .catch((error => console.error(`Ошибка при создании новой карточки ${error}`)))
-      .finally(() => popupAddCard.setupDefaultText())
+      .finally(() => popupAddCard.submitButton.textContent = defaultDeleteTextAdd);
 });
 
 popupAddCard.setEventListeners();
