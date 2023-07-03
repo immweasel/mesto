@@ -22,14 +22,13 @@ import {
   popupAddCardSelector,
   popupAvatarSelector,
   popupDeleteSelector,
+  defaultDeleteTextSave,
+  defaultDeleteTextAdd,
+  defaultDeleteTextYes,
   configInfo,
   validationConfig
 } from '../utils/constants.js';
 import '../pages/index.css';
-
-const defaultDeleteTextSave = 'Схранение...';
-const defaultDeleteTextAdd = 'Создание...';
-const defaultDeleteTextYes = 'Да...';
 
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-69',
@@ -37,7 +36,7 @@ const api = new Api({
     authorization: '1a325d4c-959b-42a2-8e6f-2cd070905828',
     'Content-Type': 'application/json'
   }
-})
+});
 
 const userInfo = new UserInfo(configInfo);
 
@@ -57,8 +56,12 @@ const deletePopupCard = new PopupDeleteCard(popupDeleteSelector, ({ element, car
 deletePopupCard.setEventListeners();
 
 function createNewCard (cardData) {
-  const card = new Card(cardData, selectorTemplate, popupFigure.open, deletePopupCard.open, (likeElement, cardId) => {
-    if (card.checkStatusLike()) {
+  const card = new Card(cardData, 
+    selectorTemplate, 
+    popupFigure.open, 
+    deletePopupCard.open, 
+    (isLike, cardId) => {
+    if (isLike) {
       api.deleteLike(cardId)
         .then(res => {
           card.toggleLike(res.likes);
@@ -80,7 +83,6 @@ const section = new Section((element) => {
 }, listElementSelector)
 
 
-
 const popupProfile = new PopupWithForm(popupProfileSelector, (data) => {
   api.setUserInfo(data)
     .then(res => {
@@ -95,22 +97,31 @@ popupProfile.setEventListeners();
 
 const popupAddCard = new PopupWithForm(popupAddCardSelector, (data) => {
   //Promise.all([api.getInfo(), api.addCard(data)])
-  api.addCard(data)
-    .then(res => {
-      res.myid = res._id;
-        section.addItemPrepend(createNewCard(res))
-        popupAddCard.close()
-      })
-      .catch((error => console.error(`Ошибка при создании новой карточки ${error}`)))
-      .finally(() => popupAddCard.setupDefaultText())
-      .then(([dataUser, dataCard]) => {
-      dataCard.myid = dataUser._id;
-      section.addItemPrepend(createNewCard(dataCard))
-      popupAddCard.close()
-    })
-      .catch((error => console.error(`Ошибка при создании новой карточки ${error}`)))
+  api.addCard(data) 
+    .then((dataCard) => { 
+      dataCard.myid = dataCard.owner._id; 
+      section.addItemPrepend(createNewCard(dataCard)) 
+      popupAddCard.close() 
+    }) 
+      .catch((error => console.error(`Ошибка при создании новой карточки ${error}`))) 
       .finally(() => popupAddCard.submitButton.textContent = defaultDeleteTextAdd);
 });
+//   api.addCard(data)
+//     .then(res => {
+//       res.myid = res._id;
+//         section.addItemPrepend(createNewCard(res))
+//         popupAddCard.close()
+//       })
+//       .catch((error => console.error(`Ошибка при создании новой карточки ${error}`)))
+//       .finally(() => popupAddCard.setupDefaultText())
+//       .then(([dataUser, dataCard]) => {
+//       dataCard.myid = dataUser._id;
+//       section.addItemPrepend(createNewCard(dataCard))
+//       popupAddCard.close()
+//     })
+//       .catch((error => console.error(`Ошибка при создании новой карточки ${error}`)))
+//       .finally(() => popupAddCard.submitButton.textContent = defaultDeleteTextAdd);
+// });
 
 popupAddCard.setEventListeners();
 
@@ -122,7 +133,7 @@ const popupAvatar = new PopupWithForm(popupAvatarSelector, (data) => {
       popupAvatar.close();
     })
       .catch((error) => console.error(`Ошибка при обновлении аватара ${error}`))
-      .finally(() => popupAvatar.setupDefaultText())
+      .finally(() => popupAvatar.submitButton.textContent = defaultDeleteTextSave);
 });
 
 popupAvatar.setEventListeners();

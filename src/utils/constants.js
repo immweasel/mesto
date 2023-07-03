@@ -42,6 +42,10 @@ const popupAddCardSelector = ".popup_type_add";
 const popupAvatarSelector = ".popup_type_avatar";
 const popupDeleteSelector = ".popup_type_delete";
 
+const defaultDeleteTextSave = 'Схранение...';
+const defaultDeleteTextAdd = 'Создание...';
+const defaultDeleteTextYes = 'Да...';
+
 
 const configInfo = {
   nameOfProfileSelector: ".profile__name",
@@ -76,6 +80,9 @@ export {
   popupAddCardSelector,
   popupAvatarSelector,
   popupDeleteSelector,
+  defaultDeleteTextSave,
+  defaultDeleteTextAdd,
+  defaultDeleteTextYes,
   configInfo,
   validationConfig
 };

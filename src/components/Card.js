@@ -12,6 +12,7 @@ export default class Card {
     this._openFigurePopup = openFigurePopup;
     this._openDeletePopup = openDeletePopup;
     this._changeLike = changeLike;
+    this._isLike = false;
     this._cloneElement = document.querySelector(this._selectorTemplate).content.querySelector('.photo-grid__item').cloneNode(true);
     this._imageElement = this._cloneElement.querySelector('.photo-grid__photo');
     this._likeElement = this._cloneElement.querySelector('.photo-grid__like');
@@ -21,7 +22,7 @@ export default class Card {
   }
 
   _handleLike = () => {
-    this._changeLike(this._likeElement, this._cardId);
+    this._changeLike(this._isLike, this._cardId);
   }
 
   _handleDelete = () => {
@@ -63,6 +64,7 @@ export default class Card {
   checkStatusLike() {
     this._likes.forEach(item => {
       if (item._id === this._myId) {
+        this._isLike = true;
         this._likeElement.classList.add("photo-grid__like_active");
         return
       }
@@ -73,5 +75,6 @@ export default class Card {
   toggleLike(likes) {
     this._likeElement.classList.toggle("photo-grid__like_active");
     this._counter.textContent = likes.length;
+    this._isLike =!this._isLike;
   }
 }
