@@ -50,7 +50,7 @@ const deletePopupCard = new PopupDeleteCard(popupDeleteSelector, ({ element, car
       deletePopupCard.close();
     })
       .catch((error => console.error(`Ошибка при убирании карточки ${error}`)))
-      .finally(() => deletePopupCard.submitButton.textContent = defaultDeleteTextYes);
+      .finally(() => deletePopupCard.setupDefaultText());
 });
 
 deletePopupCard.setEventListeners();
@@ -90,7 +90,7 @@ const popupProfile = new PopupWithForm(popupProfileSelector, (data) => {
       popupProfile.close();
     })
     .catch((error => console.error(`Ошибка при редактировании профиля ${error}`)))
-    .finally(() => popupProfile.submitButton.textContent = defaultDeleteTextSave);
+    .finally(() => popupProfile.setupDefaultText());
 });
 
 popupProfile.setEventListeners();
@@ -104,7 +104,7 @@ const popupAddCard = new PopupWithForm(popupAddCardSelector, (data) => {
       popupAddCard.close() 
     }) 
       .catch((error => console.error(`Ошибка при создании новой карточки ${error}`))) 
-      .finally(() => popupAddCard.submitButton.textContent = defaultDeleteTextAdd);
+      .finally(() => popupAddCard.setupDefaultText());
 });
 //   api.addCard(data)
 //     .then(res => {
@@ -133,7 +133,7 @@ const popupAvatar = new PopupWithForm(popupAvatarSelector, (data) => {
       popupAvatar.close();
     })
       .catch((error) => console.error(`Ошибка при обновлении аватара ${error}`))
-      .finally(() => popupAvatar.submitButton.textContent = defaultDeleteTextSave);
+      .finally(() => popupAvatar.setupDefaultText());
 });
 
 popupAvatar.setEventListeners();
