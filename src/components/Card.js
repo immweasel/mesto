@@ -42,7 +42,7 @@ export default class Card {
   _changeVisibleForDelete() {
     if (this._myId != this._ownerId) {
       this._deleteElement.remove();
-          }
+      }
     //this._myId === this._ownerId ? this._deleteElement.style.display = 'block' : this._deleteElement.style.display = 'none'
   }
 
@@ -75,6 +75,6 @@ export default class Card {
   toggleLike(likes) {
     this._likeElement.classList.toggle("photo-grid__like_active");
     this._counter.textContent = likes.length;
-    this._isLike =!this._isLike;
+    this._isLike = !this._isLike;
   }
 }

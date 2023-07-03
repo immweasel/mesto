@@ -22,9 +22,6 @@ import {
   popupAddCardSelector,
   popupAvatarSelector,
   popupDeleteSelector,
-  defaultDeleteTextSave,
-  defaultDeleteTextAdd,
-  defaultDeleteTextYes,
   configInfo,
   validationConfig
 } from '../utils/constants.js';
