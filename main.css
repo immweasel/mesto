@@ -36,7 +36,7 @@
 .popup__text-input-container{align-self:center;display:flex;flex-direction:column;height:57px;margin:0;padding:0}.popup__text-input-container:last-of-type{height:75px}@media screen and (max-width:700px){.popup__text-input-container{height:70px}.popup__text-input-container:last-of-type{height:75.26px}}
 .popup__text_invalid{border-color:red}
 .popup__name{color:#000;font-size:24px;font-weight:900;line-height:29.05px;margin:34px 64px 54px 36px}@media screen and (max-width:700px){.popup__name{font-size:18px;line-height:21.78px;margin:25px 22px 75px}}
-.popup__name_type_delete{margin-bottom:38px}
+.popup__name_type_delete{margin-bottom:20px}
 .popup__save{align-self:center;background-color:#000;border-radius:2px;color:#fff;font-size:18px;font-weight:400;height:50px;justify-content:space-around;line-height:21.78px;margin-bottom:37px;margin-top:13px;text-align:center;width:358px}.popup__save:hover{opacity:.8}@media screen and (max-width:700px){.popup__save{font-size:14px;height:46px;line-height:16.94px;margin-bottom:25px;width:238px}}
 .popup__save_add_disabled{background-color:#fff;border:2px solid #000;color:#000;opacity:.2}.popup__save_add_disabled:hover{opacity:.2}
 .popup_opened{opacity:1;visibility:visible}
