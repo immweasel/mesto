@@ -53,11 +53,7 @@ const deletePopupCard = new PopupDeleteCard(popupDeleteSelector, ({ element, car
 deletePopupCard.setEventListeners();
 
 function createNewCard (cardData) {
-  const card = new Card(cardData, 
-    selectorTemplate, 
-    popupFigure.open, 
-    deletePopupCard.open, 
-    (isLike, cardId) => {
+  const card = new Card(cardData, selectorTemplate, popupFigure.open, deletePopupCard.open, (isLike, cardId) => {
     if (isLike) {
       api.deleteLike(cardId)
         .then(res => {
